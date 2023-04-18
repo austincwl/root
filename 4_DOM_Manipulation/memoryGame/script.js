@@ -13,6 +13,12 @@ const COLORS = [
   "purple"
 ];
 
+function createColors(numBoxes){
+  let numColor = parseInt(numBoxes/2);
+
+  return array;
+}
+
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want ot research more
@@ -175,13 +181,24 @@ function handleCardClick(event) {
       match = false;
       timer = null;
 
-      const cards = document.querySelectorAll('div');
+      const gameDiv = document.getElementById('game');
+      const cards = gameDiv.querySelectorAll('div');
+      //const cards = document.querySelectorAll('div');
+      let i = 0;
+      shuffledColors = shuffle(COLORS);
       for(let card of cards){
         card.style.backgroundColor = '';
+        card.dataset.color = shuffledColors[i];
+        card.dataset.index = i;
+        delete card.dataset.set;
+        //card.dataset.set = false;
+        i++;
       }
 
-      document.location.reload();
-      startGame();
+
+
+      //document.location.reload();
+      //startGame();
 
       //createDivsForColors(shuffledColors);
       //started = true;    
@@ -201,6 +218,20 @@ startBtn.addEventListener('click',function(e){
   }
   
 });
+
+/*
+const form = document.querySelector('#num-cards');
+const input = document.querySelector('#num-item');
+
+form.addEventListener('click', function(e){
+    //console.log(e);
+    //console.log(e.target);
+    if(e.target.tagName === 'BUTTON'){
+        
+    }
+});
+
+*/
 
 function startGame(){
   console.log('game started');
