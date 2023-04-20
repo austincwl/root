@@ -2,8 +2,10 @@ const form = document.querySelector('#add-todo');
 const input = document.querySelector('#todo-item');
 const todoList = document.querySelector('#todo-list');
 
-if(localStorage.getItem('list').length > 0){
-    todoList.innerHTML = localStorage.getItem('list');
+if(localStorage.getItem('list'){
+    if(localStorage.getItem('list').length > 0){
+        todoList.innerHTML = localStorage.getItem('list');
+    }
 }
 
 todoList.addEventListener('click', function(e){
