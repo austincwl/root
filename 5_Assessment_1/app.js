@@ -1,5 +1,6 @@
 const form = document.querySelector('#create-meme');
 const memes = document.querySelector('#memes');
+let numMemes = 0;
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -27,56 +28,126 @@ function generateMeme(topText, bottomText, imageLink){
     image.src = imageLink;
     image.className = 'image';
     tText.innerText = topText;
-    tText.id = 'tt';
+    tText.id = 'tt'+numMemes;
+    console.log('ttID = tt'+numMemes);
     tText.className = 'top-center text';
     bText.innerText = bottomText;
-    bText.id = 'bt';
+    bText.id = 'bt'+numMemes;
+    console.log('btID = bt'+numMemes);
     bText.className = 'bottom-center text';
 
+    //CREATE MEME
     newMemeCont.appendChild(tText);
     newMemeCont.appendChild(bText);
     newMemeCont.appendChild(image);
     console.log('newMemeCont:')
     console.log(newMemeCont);
 
-    console.log('passing to resizeText: ');
-    console.log(newMemeCont);
-    newMemeContResized = resizeText(1,100,newMemeCont.querySelector('#tt'));
-    
-    
-    //newMemeCont.appendChild(newMeme);
+    //ADD MEME TO DOCUMENT CONTAINER
     memes.appendChild(newMemeCont);
-    //memes.appendChild(newMemeContResized);
 
+    if(memes.querySelector('#bt'+numMemes).firstChild.length>15){
+        console.log('greater than 15');
+        memes.querySelector('#bt'+numMemes).className = 'bottom-center-double text';
+    }
+
+    numMemes++
 }
+
+    /*
+    //FORMAT TEXT
+    console.log('resizing text');
+    console.log(document.querySelector('#tt0').clientHeight);
+    let height = 0;
+    let maxHeight = 30;
+    let maxSize = document.querySelector('#tt0').clientHeight;
+
+    overflow = (height>maxHeight || document.querySelector('#tt0').style.fontSize>maxSize)
+
+    
+
+    
+    let i = 0;
+    while(!overflow){
+        document.querySelector('#tt0').style.fontSize = i + 'px';
+        console.log('current font size:'+document.querySelector('#tt0').style.fontSize);
+        console.log('increasing font size, i='+i);
+        console.log(ele);
+        i++;
+        
+        height = document.querySelector('#tt0').clientHeight;
+        console.log('height: ' + height);
+
+        overflow = (height>maxHeight || i>maxSize)
+    }
+
+    document.querySelector('#tt0').style.fontSize = (i-1) + 'px';
+    //console.log('passing to resizeText: ');
+    //console.log(newMemeCont.querySelector('#tt'+numMemes));
+    const newMemeContEle = resizeText(30,50,newMemeCont.querySelector('#tt'+numMemes));
+    //resizeText(30,50,newMemeCont.querySelector('#bt'));
+    
+    
+    
+
+    const topTextFinal = document.querySelector('#tt'+numMemes);
+    console.log('topTextFinal');
+    console.log(topTextFinal);
+    console.log(document.querySelector('#tt0'));
+    console.log(document.querySelector('#tt0').clientHeight);
+    //memes.appendChild(newMemeContEle);
+
+    numMemes++;
+}*/
+
+/*
+let width = 0;
+let height = 0;
 
 function isOverFlown(element, max) {
     //const context = element.getContext("2d");
     //const width = context.measureText(element.innerText);
-    const width = element.clientWidth;
-    return width > max;
+    console.log('enter isOverFlown');
+    console.log(element);
+    console.log(element.firstChild);
+    height = element.clientHeight;
+    width = element.clientWidth;
+    
+    console.log('text height: ' + height);
+    console.log('text width: ' + width);
+    console.log('text height2: ' + element.clientHeight);
+    console.log('text width2: ' + element.clientWidth);
+    console.log('return isOverFlown');
+    return height > max; /*|| element.clientWidth;
     //return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
+*/
 
-function resizeText(minSize, maxSize, ele){
-    let overflow = isOverFlown(ele,maxSize);
-    let i = minSize;
+/*function resizeText(maxHeight, maxSize, ele){
+    let overflow = false;
+    let i = 1;
+    let height = ele.clientHeight;
+    let width = ele.clientWidth;
+
+    
+
+    overflow = (height>maxHeight || ele.style.fontSize>maxSize)
 
     console.log('resizing text');
+    console.log(document.querySelector('#tt0').clientHeight);
 
-    while(!overflow && i<maxSize){
+    while(!overflow){
         ele.style.fontSize = i + 'px';
-        if(isOverFlown(ele,maxSize)){
-            ele.style.fontSize = i-1 + 'px';
-            break;
-        }
-        else{
-            console.log('current font size:'+ele.style.fontSize);
-            console.log('increasing font size, i='+i);
-            console.log(ele);
-            i++;
-        }
+        console.log('current font size:'+ele.style.fontSize);
+        //console.log('increasing font size, i='+i);
+        //console.log(ele);
+        i++;
         
+        height = ele.clientHeight;
+        console.log('height: ' + height);
+        overflow = (height>maxHeight || i>maxSize)
     }
+
+    ele.style.fontSize = (i-1) + 'px';
     return ele;
-}
+}*/
