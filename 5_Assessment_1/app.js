@@ -1,8 +1,14 @@
 const form = document.querySelector('#create-meme');
 const memes = document.querySelector('#memes');
+const deleteButton = document.getElementsByClassName('delete');
 let numMemes = 0;
 
 form.addEventListener('submit', function(e){
+    console.log('e.target...');
+    const submitMeme = e.target.querySelector('#submit-meme');
+    
+
+    console.log(e.target.style.backgroundColor);
     e.preventDefault();
     console.log(e);
     console.log('TopText: '+ e.target.querySelector('#top-text').value);
@@ -13,8 +19,27 @@ form.addEventListener('submit', function(e){
     bottomText = e.target.querySelector('#bottom-text').value
     imageLink  = e.target.querySelector('#image-link').value
 
-    generateMeme(topText,bottomText,imageLink);
+    if(topText && bottomText && imageLink){
+        e.target.querySelector('#top-text').value = '';
+        e.target.querySelector('#bottom-text').value = '';
+        e.target.querySelector('#image-link').value = '';
+        generateMeme(topText,bottomText,imageLink);
+
+        //button indicator styles
+        submitMeme.style.backgroundColor = 'green';
+        setTimeout(function(){
+            submitMeme.style.backgroundColor = 'white'
+        },250);
+    }
+    else{
+        submitMeme.style.backgroundColor = 'red';
+        setTimeout(function(){
+            submitMeme.style.backgroundColor = 'white'
+        },100);
+    }
 });
+
+
 
 function generateMeme(topText, bottomText, imageLink){
     const newMemeCont = document.createElement('li');
@@ -22,8 +47,11 @@ function generateMeme(topText, bottomText, imageLink){
     const image = document.createElement('img');
     const tText = document.createElement('div');
     const bText = document.createElement('div');
+    const hover = document.createElement('div');
+    const btnHover = document.createElement('button');
     
-    newMemeCont.className='flex-item';
+    newMemeCont.className='flex-item ';
+    newMemeCont.id = 'memeNum'+numMemes;
     //newMeme.className = 'container';
     image.src = imageLink;
     image.className = 'image';
@@ -36,10 +64,31 @@ function generateMeme(topText, bottomText, imageLink){
     console.log('btID = bt'+numMemes);
     bText.className = 'bottom-center text';
 
+    //hover
+    hover.className = 'hover';
+    //hover.innerText='hover_inner_text';
+    
+    btnHover.innerText = 'DELETE';
+    btnHover.className = 'delete';
+    btnHover.id='deleteNum'+numMemes;
+    btnHover.addEventListener('click', function(e){
+        console.log('CLICKED DELETE');
+        console.log(e.target.id);
+        console.log(e.target);
+        const p1 = e.target.parentElement.parentElement;
+        console.log(p1);
+        e.target.parentElement.parentElement.remove();
+        //const currentMeme = document.querySelector('e.target.
+        //btnHover.parentElement.parentElement.innerHTML=''
+    });
+    hover.appendChild(btnHover);
+
+
     //CREATE MEME
     newMemeCont.appendChild(tText);
     newMemeCont.appendChild(bText);
     newMemeCont.appendChild(image);
+    newMemeCont.appendChild(hover);
     console.log('newMemeCont:')
     console.log(newMemeCont);
 
@@ -51,6 +100,7 @@ function generateMeme(topText, bottomText, imageLink){
         memes.querySelector('#bt'+numMemes).className = 'bottom-center-double text';
     }
 
+    console.log('NEW MEME GENERATED');
     numMemes++
 }
 
@@ -151,3 +201,4 @@ function isOverFlown(element, max) {
     ele.style.fontSize = (i-1) + 'px';
     return ele;
 }*/
+
