@@ -1,6 +1,6 @@
 mkdir first
 cd C:\users\austi\first
-cat person.txt
+touch person.txt
 mv person.txt another.txt
 cp another.txt copy.txt
 rm copy.txt
@@ -11,8 +11,7 @@ rm second
 
 =================================
 1. man rm tells you the properties of the 'rm' command. 
-In powershell, you scroll with your scroll wheel and the output is
-static, so you are already 'out' after entering the command 
+scroll with arrow keys, exit with q
 
 2. man ls 
 ls -l tag gives a long listing
@@ -28,7 +27,7 @@ cntl + e
 cntl + a
 
 6. how do you delete a word (without pressing backspace multiple times) in terminal 
-cntl + backspace
+alt + backspace
 
 7. what is the difference between a terminal and shell
 the terminal is the interface of the shell
