@@ -1,0 +1,47 @@
+mkdir first
+cd C:\users\austi\first
+cat person.txt
+mv person.txt another.txt
+cp another.txt copy.txt
+rm copy.txt
+
+cd ~
+cp first second
+rm second
+
+=================================
+1. man rm tells you the properties of the 'rm' command. 
+In powershell, you scroll with your scroll wheel and the output is
+static, so you are already 'out' after entering the command 
+
+2. man ls 
+ls -l tag gives a long listing
+-a shows hidden files
+
+3.how do you jump between words in terminal
+cntl + left/right arrow
+
+4. how do you get to the end of a line in terminal
+cntl + e
+
+5. how do you move your cursot to the beginning in terminal
+cntl + a
+
+6. how do you delete a word (without pressing backspace multiple times) in terminal 
+cntl + backspace
+
+7. what is the difference between a terminal and shell
+the terminal is the interface of the shell
+
+8. what is an absolute path
+an absolute path is relative to the drive
+
+9.what is a relative path 
+a relative path is relative to the current location
+
+10. what is a flag? give three examples of flags you have used
+a flag specifies versions of commands ex. -a for ls all, -l for ls long, and -r is for copying directories
+
+11. what do the r and f flags do with the rm command?
+-r will remove folters 
+-f will force removal
