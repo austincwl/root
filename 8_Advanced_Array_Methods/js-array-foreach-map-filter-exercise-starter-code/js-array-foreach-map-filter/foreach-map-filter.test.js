@@ -152,8 +152,8 @@ describe("#findInObj", function() {
 describe("#removeVowels", function() {
   it("removes all vowels from a string", function() {
     expect(removeVowels("elie")).toEqual("l");
-    expect(removeVowels("TIM")).toEqual("tm");
-    expect(removeVowels("ZZZZZZ")).toEqual("zzzzzz");
+    expect(removeVowels("TIM")).toEqual("TM");
+    expect(removeVowels("ZZZZZZ")).toEqual("ZZZZZZ");
   });
 });
 

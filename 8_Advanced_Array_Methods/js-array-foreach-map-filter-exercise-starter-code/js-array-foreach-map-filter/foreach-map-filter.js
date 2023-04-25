@@ -58,7 +58,7 @@ Examples:
 function addKeyAndValue(arr,key,val){
     arr.forEach(function(value,index,array){
         value[key] = val;
-        console.log("arr[key]:"+value[key]);        
+        //console.log("arr[key]:"+value[key]);        
     });
 
     return arr;
@@ -78,8 +78,8 @@ function vowelCount(str){
     let out = {};
     const arr = str.split("");
     arr.map(function(value,index){
-        console.log("letter:"+value);
-        console.log("index:"+index);
+        //console.log("letter:"+value);
+        //console.log("index:"+index);
 
         if(isVowel(value)){
             out[value] ? addCount(out,value):createCount(out,value);
@@ -88,11 +88,10 @@ function vowelCount(str){
         return out; 
    });
 
-   console.log("vowelCount return:");
-   console.log(out);
+   //console.log("vowelCount return:");
+   //console.log(out);
    return out;
 
-   function isVowel(letter)             { return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u';}
    function addCount(obj, letter)       {obj[letter]++;}
    function createCount(obj, letter)    { obj[letter] = 1;}
 }
@@ -105,7 +104,14 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    let out = arr.map(function(value,index,array){
+        //console.log("value = " + value)
+        return value * 2;
+    });
+
+    return out;
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -116,7 +122,12 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    
+    let out = arr.map(function(value,index,array){
+        //console.log("value = " + value)
+        return value * index;
+    });
+
+    return out;
 }
 
 /*
@@ -127,7 +138,12 @@ Examples:
 */
 
 function extractKey(arr, key){
-    
+    let out = arr.map(function(value,index,array){
+        //console.log("value = " + value)
+        return value[key];
+    });
+
+    return out;
 }
 
 /*
@@ -138,7 +154,12 @@ Examples:
 */
 
 function extractFullName(arr){
-    
+    let out = arr.map(function(value,index,array){
+        //console.log("value = " + value)
+        return value['first'] + " " + value['last'];
+    });
+
+    return out;
 }
 
 /*
@@ -148,7 +169,11 @@ Examples:
     filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner') // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 */
 
-function filterByValue(arr, key) {}
+function filterByValue(arr, key) {
+    return arr.filter(function(value){
+        if(value[key]){return value;}
+    });
+}
 
 /*
 Write a function called find which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
@@ -158,7 +183,17 @@ Examples:
     find([1,2,3,4,5], 10) // undefined
 */
 
-function find(arr, searchValue) {}
+function find(arr, searchValue) {
+    let out = undefined;
+    arr.forEach(function(value){
+        if (value == searchValue){
+            //console.log("search value found:"+value)
+            out = value;
+        }
+    });
+
+    return out;
+}
 
 /*
 Write a function called findInObj which accepts an array of objects, a key, and some value to search for and returns the first found value in the array.
@@ -167,7 +202,18 @@ Examples:
     findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true) // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, searchValue) {}
+function findInObj(arr, key, searchValue) {
+    let out = undefined;
+    arr.forEach(function(value){
+        if (value[key] == searchValue){
+            //console.log("search value found:"+value)
+
+            if(!out){out=value;}
+        }
+    });
+
+    return out;
+}
 
 /*
 Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
@@ -178,8 +224,18 @@ Examples:
     removeVowels('ZZZZZZ') // ('zzzzzz')
 */
 
-function removeVowels(str) {}
+function removeVowels(str) {
+    const arr = str.split('');
+    console.log("arr:"+arr);
 
+    let out = arr.filter(function(value){
+        console.log('letter:'+value);
+        console.log('isVowel:'+isVowel(value));
+        return (!isVowel(value));
+    });
+
+    return out.join('');
+}
 /*
 Write a function called doubleOddNumbers which accepts an array and returns a new array with all of the odd numbers doubled (HINT - you can use map and filter to double and then filter the odd numbers).
 
@@ -188,4 +244,18 @@ Examples:
     doubleOddNumbers([4,4,4,4,4]) // []
 */
 
-function doubleOddNumbers(arr) {}
+function doubleOddNumbers(arr) {
+    let odds =  arr.filter(function(value){
+        return(value % 2 == 1);
+    });
+    
+    return doubleValues(odds);
+
+}
+
+
+//returns true if input letter is a vowel.
+function isVowel(letterIn){
+    let letter = letterIn.toLowerCase(); 
+    return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u';
+}
