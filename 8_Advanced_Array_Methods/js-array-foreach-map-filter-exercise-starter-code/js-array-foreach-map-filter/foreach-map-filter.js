@@ -7,8 +7,14 @@ Examples:
 
 */
 function doubleValues(arr){
-    
+    arr.forEach(function(value,index,array){
+        //console.log("value = " + value)
+        arr[index] = value * 2;
+    });
+
+    return arr;
 }
+
 
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
@@ -19,7 +25,9 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    
+    return arr.filter(function(value){
+        return (value % 2 == 0);
+    });
 }
 
 /*
@@ -31,7 +39,11 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    
+    return arr.map(function(value,index){
+        //console.log("slice0:"+value.charAt(0))
+        //console.log("slice1:"+value.slice(-1))
+        return (value.charAt(0) + value.slice(-1));
+    });
 }
 
 /*
@@ -43,8 +55,13 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
-function addKeyAndValue(arr,key,value){
-    
+function addKeyAndValue(arr,key,val){
+    arr.forEach(function(value,index,array){
+        value[key] = val;
+        console.log("arr[key]:"+value[key]);        
+    });
+
+    return arr;
 }
 
 /*
@@ -58,7 +75,26 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-   
+    let out = {};
+    const arr = str.split("");
+    arr.map(function(value,index){
+        console.log("letter:"+value);
+        console.log("index:"+index);
+
+        if(isVowel(value)){
+            out[value] ? addCount(out,value):createCount(out,value);
+        }
+
+        return out; 
+   });
+
+   console.log("vowelCount return:");
+   console.log(out);
+   return out;
+
+   function isVowel(letter)             { return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u';}
+   function addCount(obj, letter)       {obj[letter]++;}
+   function createCount(obj, letter)    { obj[letter] = 1;}
 }
 
 /*
