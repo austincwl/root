@@ -1,4 +1,4 @@
-describe("#findUserByUsername", function() {
+   describe("#findUserByUsername", function() {
   let users;
   beforeEach(function() {
     users = [
