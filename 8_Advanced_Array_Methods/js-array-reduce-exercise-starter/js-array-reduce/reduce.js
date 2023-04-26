@@ -25,7 +25,29 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 
-function vowelCount(str) {}
+function isVowel(letterIn){
+    let letter = letterIn.toLowerCase(); 
+    return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u';
+}
+
+function vowelCount(str) {
+    let letters = str.split('');
+    return letters.reduce(function(accum, value){
+        value = value.toLowerCase();
+        if(isVowel(value)){
+            console.log('isVowel');
+            if(accum[value]){
+                console.log('accum[value]++;')
+                accum[value]++;
+            }
+            else{
+                console.log('accum[value] = 1;');
+                accum[value] = 1;
+            }
+        }
+        return accum;
+    },{});
+}
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
@@ -42,7 +64,14 @@ Examples:
        ]
 */
 
-function addKeyAndValue(arr, key, value) {}
+function addKeyAndValue(arr, key, value) {
+    return arr.reduce(function(accum, current){
+        current[key] = value;
+        accum.push(current);
+        return accum;
+    },[]);
+    
+}
 
 /*
 Write a function called partition which accepts an array and a callback and returns an array with two arrays inside of it. The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray. 
@@ -66,4 +95,25 @@ Examples:
     partition(names, isLongerThanThreeCharacters) // [['Elie', 'Colt', 'Matt'], ['Tim']]
 */
 
-function partition(arr, callback) {}
+function partition(arr, callback) {
+    return arr.reduce(function(accum, value){
+        //could turn the following into switch/case statement
+        if(callback(value)){
+            if(accum[0]){
+                accum[0].push(value)
+            }
+            else{
+                accum[0] = [value]
+            }
+        }
+        else{
+            if(accum[1]){
+                accum[1].push(value)
+            }
+            else{
+                accum[1] = [value]
+            }
+        }
+        return accum;
+    },[]);
+}
