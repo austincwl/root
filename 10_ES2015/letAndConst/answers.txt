@@ -1,0 +1,23 @@
+Give:
+var PI = 3.14;
+PI = 42; // stop me from doing this!
+
+Correction:
+const PI = 3.14;
+
+var vs let?
+let cannot be redeclared as a different type, var can
+var can access a hoisted variable
+let creates block scope
+
+var vs. const?
+const cannot be reassigned or redeclared, var can do both
+const creates a block scope
+
+let vs const?
+let can be reassigned, const cannot.
+
+hoisting?
+variables are hoisted when the program is compiled.
+This means that lines declaring variables are the
+first to be run in thier scope.
