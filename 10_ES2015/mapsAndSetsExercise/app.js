@@ -24,3 +24,16 @@ each entry has two keys, an array and a boolean
 
 console.log(hasDuplicate([1,3,2,1])) // true
 console.log(hasDuplicate([1,5,-1,4])) // false
+
+function hasDuplicate(arr){
+    const set = new Set(arr);
+    return(arr.length > set.size);
+}
+
+//vowelCount
+vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
+vowelCount('Colt') // Map { 'o' => 1 }
+
+function vowelCount(str){
+    
+}
