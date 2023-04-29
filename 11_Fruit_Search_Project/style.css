@@ -7,7 +7,8 @@
 }
 
 body {
-  /* TODO */
+ background-color:black;
+ color: white;
 }
 
 input {
@@ -35,10 +36,10 @@ ul.has-suggestions {
   /* TODO */
 }
 ul li {
-  /* TODO */
+  background-color:black;
 }
 ul li:hover {
-  /* TODO */
+  background-color: white;
 }
 
 input {
