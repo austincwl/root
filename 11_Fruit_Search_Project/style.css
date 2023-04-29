@@ -7,41 +7,62 @@
 }
 
 body {
- background-color:black;
- color: white;
+ background-color:rgb(49, 49, 49);
+ border:1px solid black;
+ color: black;
+ /*padding: 10vh 10vw;*/
+ font-family: 'Courier New', Courier, monospace;
+ font-size: 40px;
+ margin: 5px;
 }
 
-input {
- /* TODO */
-}
 
 .search-container {
- /* TODO */
+  align-self: center;
+  border:1px solid black;
+  margin:auto;
+  margin-top: 20vh;
+  align-self: center;
+  width:80%
+}
+.search-container h1 {
+  text-align:center;
+  font-size: 75px;
+  margin-bottom: 0px;
+  margin-top:0px;
 }
 .search-container input,
 .search-container .suggestions {
-  /* TODO */
+  margin-left:20px;
+  margin-right: 20px;
+  
 }
 .search-container input {
- /* TODO */
+  
 }
 .search-container .suggestions {
-   /* TODO */
+  border-radius:5px;
+ 
 }
 
 ul {
-  /* TODO */
+  list-style-type: none;
 }
 ul.has-suggestions {
   /* TODO */
 }
 ul li {
-  background-color:black;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  transition: .5s ease;
+
 }
-ul li:hover {
-  background-color: white;
+ul li:hover { 
+  background-color: darkgray;
+  transition: .5s ease;
 }
 
 input {
-   /* TODO */
+  width:80%;
 }
