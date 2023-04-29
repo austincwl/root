@@ -35,5 +35,18 @@ vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
 vowelCount('Colt') // Map { 'o' => 1 }
 
 function vowelCount(str){
-    
+    console.log("vowel count");
+    let out = new Map();
+    for(let i in str){
+        console.log(str[i]);
+        if ("aeiou".includes(str[i])){
+            if(out.get(str[i])){
+                out.set(str[i],out.get(str[i]) + 1);
+            }
+            else{
+                out.set(str[i],1)
+            }
+        } 
+    }
+    console.log(out);    
 }
