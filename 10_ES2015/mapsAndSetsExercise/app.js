@@ -49,4 +49,5 @@ function vowelCount(str){
         } 
     }
     console.log(out);    
+    return out;
 }
