@@ -56,7 +56,7 @@ function showSuggestions(results, inputVal) {
 	else{
 		const suggestion = document.createElement('li');
 		suggestion.innerText = "No Results";
-		suggestion.style.color = '#502e00';
+		suggestion.style.color = '#515151';
 		suggestions.appendChild(suggestion);
 	}
 }	
