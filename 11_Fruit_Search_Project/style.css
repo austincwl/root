@@ -7,8 +7,7 @@
 }
 
 body {
- background-color:rgb(49, 49, 49);
- border:1px solid black;
+ background-color: white;
  color: black;
  /*padding: 10vh 10vw;*/
  font-family: 'Courier New', Courier, monospace;
@@ -16,14 +15,14 @@ body {
  margin: 5px;
 }
 
-
 .search-container {
   align-self: center;
-  border:1px solid black;
   margin:auto;
   margin-top: 20vh;
   align-self: center;
-  width:80%
+  width:90%;
+  /* place-items:center;
+  display:grid; */
 }
 .search-container h1 {
   text-align:center;
@@ -33,36 +32,68 @@ body {
 }
 .search-container input,
 .search-container .suggestions {
-  margin-left:20px;
-  margin-right: 20px;
-  
+  margin: auto;
+  display: block;
+  text-align: left;
+  width: 80%;
+ 
+ /* background-color: #eaeaea; */
+
 }
 .search-container input {
-  
+  border-radius: 30px;
+  padding:10px;
+  overflow:hidden;
+  border:4px solid grey;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 5px 5px #cfcece;
 }
 .search-container .suggestions {
-  border-radius:5px;
- 
 }
 
 ul {
   list-style-type: none;
+  padding: 0px;
+  padding-top: 0px;
+  margin-top: 0px;
+  /* border:5px solid black; */
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+  box-shadow: 5px 5px #cfcece;
 }
+
 ul.has-suggestions {
-  /* TODO */
+  border:4px solid grey;
+  background-color: white;
 }
 ul li {
-  color: white;
+  color: black;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   transition: .5s ease;
-
+  padding-left:10px;
+  padding-right:10px;
+  /* padding-top: 3px;
+  padding-bottom:3px; 
+  margin-bottom: 2px;*/
+  /* background-color: #eaeaea; */
 }
 ul li:hover { 
   background-color: darkgray;
   transition: .5s ease;
+  
 }
 
 input {
-  width:80%;
+
+}
+
+.t1{
+  color:green;
+}
+
+.t2{
+  color:red;
 }

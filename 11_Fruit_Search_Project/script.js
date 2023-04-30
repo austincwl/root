@@ -5,40 +5,68 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
+document.addEventListener("DOMContentLoaded", init);
+
+function init(e){
+	input.value = ''
+}
 
 function searchHandler(e) {
 	//console.log(e.target.value);
 	suggestions.innerHTML = '';
-	let results = search(e.target.value);
-	showSuggestions(results, e.target.value)
+	if(e.target.value.length>0){
+		suggestions.classList.add('has-suggestions');
+		let results = search(e.target.value);
+		showSuggestions(results, e.target.value)
+	}
+	else{
+		clearSuggestions();
+	}
 }
 
 function search(str) {
-	console.log("enter search with: "+str)
 	let results = [];
+	
+	console.log("enter search with: "+str)
 
 	for (let i in fruit){
 		let temp = (fruit[i]).toLowerCase();
 		//console.log("word.toLowerCase:"+temp)
+		console.log("if includes string");
+		console.log(temp.includes(str.toLowerCase()));
 		if(temp.includes(str.toLowerCase()))
 		results.push(fruit[i]);
 	}
 	console.log("search with results:"+results)
+	
 	return results;
 }
 
 function showSuggestions(results, inputVal) {
-	console.log("enter showSuggestions");
-	console.log("results:"+results)
+	//console.log("enter showSuggestions");
+	//console.log("results:"+results)
 	// TODO
-	for(let i in results){
+	if(results.length > 0){
+		for(let i in results){
+			const suggestion = document.createElement('li');
+			suggestion.innerText = results[i];
+			suggestions.appendChild(suggestion);
+		}
+	}
+	else{
 		const suggestion = document.createElement('li');
-		suggestion.innerText = results[i];
+		suggestion.innerText = "No Results";
+		suggestion.style.color = 'grey';
 		suggestions.appendChild(suggestion);
 	}
-	
-}
+}	
 
 function useSuggestion(e) {
 	input.value = e.target.innerText;
+	clearSuggestions();
+}
+
+function clearSuggestions(){
+	suggestions.innerHTML = '';
+	suggestions.classList.remove('has-suggestions');
 }
