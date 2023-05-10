@@ -16,20 +16,38 @@
  */
 //each row of cells is put into an array of rows
 
+class Player {
+  constructor(color){
+    this.color = color;
+  }
+}
+
+const bob = new Player("green");
+const pop = new Player("orange");
+
+function startGame(){
+  console.log("startGame")
+  new Game(bob,pop);
+}
+
+const startBtn = document.querySelector('button');
+startBtn.addEventListener('click',startGame);
 
 class Game {
-  constructor(height = 6,width = 7){
+  constructor(player1, player2 ,height = 6,width = 7){
     console.log("constructor")
     this.height = height;
     this.width = width;
-    this.player1 = 1;
-    this.player2 = 2;
-    this.currPlayer = 1;
+    this.player1 = player1;
+    this.player1.num = 1;
+    this.player2 = player2;
+    this.player2.num = 2;
+    this.currPlayer = player1;
     this.board = [];
     this.makeBoard();
     this.makeHtmlBoard();
+    this.over = false;
   }
-
   makeBoard() {
     console.log("make board")
     for (let y = 0; y < this.height; y++) {
@@ -93,8 +111,9 @@ class Game {
     console.log("placeInTable")
     const piece = document.createElement('div');
     piece.classList.add('piece');
-    piece.classList.add(`p${this.currPlayer}`);
+    piece.classList.add(`p${this.currPlayer.num}`);
     piece.style.top = -50 * (y + 2);
+    piece.style.backgroundColor = this.currPlayer.color;
 
     const spot = document.getElementById(`${y}-${x}`);
     spot.append(piece);
@@ -104,41 +123,47 @@ class Game {
 
   endGame(msg) {
     console.log("endGame")
+    this.over = true;
     alert(msg);
   }
 
   /** handleClick: handle click of column top to play piece */
 
   handleClick(evt) {
-    console.log("handleClick")
-    // get x from ID of clicked cell
-    const x = +evt.target.id;
-    console.log(x);
-    // get next spot in column (if none, ignore click)
-    const y = this.findSpotForCol(x);
-    if (y === null) {
-      return;
-    }
+    console.log("handleClick");
+    console.log("this.currPlayer:")
+    console.log(this.currPlayer);
+    if(!this.over){
+      // get x from ID of clicked cell
+      const x = +evt.target.id;
+      console.log(x);
+      // get next spot in column (if none, ignore click)
+      const y = this.findSpotForCol(x);
+      if (y === null) {
+        return;
+      }
 
-    // place piece in board and add to HTML table
-    this.board[y][x] = this.currPlayer;
-    this.placeInTable(y, x);
-    
-    // check for win
-    if (this.checkForWin()) {
-      return this.endGame(`Player ${this.currPlayer} won!`);
-    }
-    
-    // check for tie
-    if (this.board.every(row => row.every(cell => cell))) {
-      return this.endGame('Tie!');
-    }
+      // place piece in board and add to HTML table
+      this.board[y][x] = this.currPlayer;
+      console.log("this.board[y][x]:");
+      console.log(this.board[y][x]);
+      this.placeInTable(y, x);
       
-    // switch players
-    this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+      // check for win
+      if (this.checkForWin()) {
+        return this.endGame(`Player ${this.currPlayer.num} won!`);
+      }
+      
+      // check for tie
+      if (this.board.every(row => row.every(cell => cell))) {
+        return this.endGame('Tie!');
+      }
+        
+      // switch players
+      this.currPlayer = this.currPlayer === this.player1 ? this.player2 : this.player1;
     }
-
-    /** checkForWin: check board cell-by-cell for "does a win start here?" */
+  }
+      /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
   checkForWin() {
     console.log("checkForWin")
@@ -172,5 +197,3 @@ class Game {
   }
 }
 
-console.log("Game")
-new Game(6,7);
