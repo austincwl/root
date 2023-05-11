@@ -22,15 +22,22 @@ class Player {
   }
 }
 
-const bob = new Player("green");
-const pop = new Player("orange");
+const form = document.querySelector("form");
+form.addEventListener('submit',function(e){
+  e.preventDefault(); 
+});
 
 function startGame(){
   console.log("startGame")
+  const player1 = document.querySelector("#player1").value;
+  const player2 = document.querySelector("#player2").value;
+
+  let bob = new Player(player1);
+  let pop = new Player(player2);
   new Game(bob,pop);
 }
 
-const startBtn = document.querySelector('button');
+const startBtn = document.getElementById('start');
 startBtn.addEventListener('click',startGame);
 
 class Game {
