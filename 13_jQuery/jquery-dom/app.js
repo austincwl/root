@@ -8,6 +8,9 @@ $(function(){
     //give all images inside an artical tag the class "image center"
     $("article p:last-child").remove();
 
+    $("#title").css("fontSize", Math.random()*100+1)
+
+    $("ol")
 
 });
 
