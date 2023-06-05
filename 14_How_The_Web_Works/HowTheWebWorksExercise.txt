@@ -1,0 +1,36 @@
+## **Part One: Solidify Terminology**
+
+In your own terms, define the following terms:
+
+- What is HTTP?
+    Hyper Text Transfer Protocol
+    HTTP is the ruleset for communicating with a server
+- What is a URL?
+    Uniform Resource Locator
+    A URL is a location for a resource on a server
+- What is DNS?
+    Domain Name System
+    DNS converts URLs into IP addresses
+- What is a query string?
+    added fields to a URL.
+    EX: https://en.wikipedia.org/w/index.php?title=Query_string&action=edit
+    the above link adds the following key-value pairs: 
+        title = Query_string
+        action = edit
+- What are two HTTP verbs and how are they different?
+    GET: requests with no side-effects (doesn't change data on server)
+    POST: requests with side-effects (changes data on server)
+- What is an HTTP request?
+    a request for data on a server following the HTTP ruleset
+- What is an HTTP response?
+    this is the data sent back to the client after revieving an HTTP request (requested data, or an error code)
+- What is an HTTP header? Give a couple examples of request and response headers you have seen.
+    An HTTP header contains information about the HTTP request/response. For example, requesting the same URL with a 
+    different Content-Language header will allow the same link to work for different languages
+    Examples: Date, Server, Content-Type, Content-Language
+- What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+    1. the URL is turned into an IP address
+    2. an HTTP request is sent to the IP address
+    3. the server sends a response to the sending client according to the request
+    4. the browser renders the data recieved from the server (HTML)
+    5. the browser sends more requests for recieved page dependancies
