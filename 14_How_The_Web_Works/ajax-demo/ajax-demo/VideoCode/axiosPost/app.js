@@ -10,7 +10,6 @@
 
 // createUser();
 
-
 async function getUsers(token) {
   const res = await axios.get('https://hack-or-snooze-v3.herokuapp.com/users', { params: { token } });
   console.log(res);
@@ -50,7 +49,3 @@ async function createStory() {
 
 // getUsersWithAuth();
 createStory();
-
-
-
-
