@@ -9,11 +9,16 @@
 
 <body>
     <h1>Giphy Party</h1>
-    <form id="search-form">
+    <form id="search-form" action=''>
         <input id="search" type="text">
-        <button id="search">Search Gif</button>
-        <button id="clear">Clear Gifs</button>
+        <button id="submit">Search Gif</button>
+        <button id='clear'>Clear Gifs</button>
     </form>
+    <gifs></gifs>
+    <div>
+        <h3>Sample Gif</h3>
+        <img src='https://media2.giphy.com/media/Xev2JdopBxGj1LuGvt/giphy.gif?cid=35597039p3s8opaclw35tb8w18y7t9mqfvzisb0hrcbzdcl1&ep=v1_gifs_search&rid=giphy.gif&ct=g' width='10%'>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="app.js"></script>
