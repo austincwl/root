@@ -8,7 +8,7 @@
 //   console.log(res);
 // }
 
-// createUser();
+// createUser(); 
 
 async function getUsers(token) {
   const res = await axios.get('https://hack-or-snooze-v3.herokuapp.com/users', { params: { token } });
