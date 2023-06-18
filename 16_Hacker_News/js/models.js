@@ -206,19 +206,19 @@ class User {
  
 }
 
- async function addFavorite(token, username, storyID){
+async function addFavorite(token, username, storyID){
     try{
         console.debug('try addFavorite');
         const response = await axios({
             url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
             method: "post",
             params: { token },
-          });
-    
+            });
+
         
     }
     catch{
         console.error('error adding favorite');
         return null;
     }
-  }
+}
