@@ -1,0 +1,162 @@
+[
+    {
+        "storyId": "bee35550-1da9-4da7-bfed-13755e398081",
+        "title": "test",
+        "author": "test",
+        "url": "http://www.google.com",
+        "username": "matheusjacob123",
+        "createdAt": "2023-06-14T18:52:54.587Z"
+    },
+    {
+        "storyId": "0485cd7e-8ce6-4f74-a1cd-99bc2fe2f858",
+        "title": "historias de carlos",
+        "author": "carlos",
+        "url": "http://www.librosmaravillosos.com/historiasdelahistoria/index.html",
+        "username": "juanda",
+        "createdAt": "2023-06-14T18:37:29.726Z"
+    },
+    {
+        "storyId": "de9934d9-068e-46b7-a476-c86592b641f1",
+        "title": "xyz",
+        "author": "abc",
+        "url": "https://www.abc.com/",
+        "username": "test1@ymail.com",
+        "createdAt": "2023-06-14T15:34:37.090Z"
+    },
+    {
+        "storyId": "6520e156-b5f3-4941-a151-3ee2af0353f5",
+        "title": "xyz",
+        "author": "abc",
+        "url": "https://www.abc.com/",
+        "username": "test1@ymail.com",
+        "createdAt": "2023-06-14T15:34:33.243Z"
+    },
+    {
+        "storyId": "d50335b4-b0fc-44bf-a663-a9e82ec1bac7",
+        "title": "mfs1t",
+        "author": "mfs1a",
+        "url": "https://www.google.com",
+        "username": "test1b",
+        "createdAt": "2023-06-14T05:44:56.559Z"
+    },
+    {
+        "storyId": "25ab31a1-85d6-48aa-8fd8-4aafe7d42828",
+        "title": "Do as I say not as I do",
+        "author": "Hippocrates",
+        "url": "https://finance.yahoo.com/news/student-loans-biden-vetoes-bill-to-claw-back-student-loan-relief-234933387.html",
+        "username": "DanUser",
+        "createdAt": "2023-06-14T02:24:29.876Z"
+    },
+    {
+        "storyId": "a63d911c-72a5-4def-a9f0-b86a8493dde7",
+        "title": "hello",
+        "author": "me",
+        "url": "http://www.youtube.com",
+        "username": "newAccountCheck",
+        "createdAt": "2023-06-14T02:15:48.665Z"
+    },
+    {
+        "storyId": "95590fdd-1d17-4638-8c82-4aaff9b1c1fd",
+        "title": "hello",
+        "author": "me",
+        "url": "http://www.youtube.com",
+        "username": "newAccountCheck",
+        "createdAt": "2023-06-14T02:15:44.116Z"
+    },
+    {
+        "storyId": "71584ab8-5eb0-4466-be83-87e69e2f5723",
+        "title": "Alrighty",
+        "author": "me",
+        "url": "http://www.spotify.com",
+        "username": "MeowBabyKitty",
+        "createdAt": "2023-06-14T02:11:08.896Z"
+    },
+    {
+        "storyId": "a0c09244-afed-435d-aa19-3c3ae7d2c37e",
+        "title": "Alrighty",
+        "author": "me",
+        "url": "http://www.spotify.com",
+        "username": "MeowBabyKitty",
+        "createdAt": "2023-06-14T02:11:04.088Z"
+    },
+    {
+        "storyId": "87649c90-bfce-401b-8c6a-07c4f980199f",
+        "title": "Am I working?",
+        "author": "me",
+        "url": "http://www.google.com",
+        "username": "MeowBabyKitty",
+        "createdAt": "2023-06-14T02:09:41.735Z"
+    },
+    {
+        "storyId": "7f7f8656-da2d-4c18-b099-0377a04fbbe2",
+        "title": "hello",
+        "author": "me",
+        "url": "http://www.spotify.com",
+        "username": "MeowBabyKitty",
+        "createdAt": "2023-06-14T02:08:16.871Z"
+    },
+    {
+        "storyId": "a45a2d7a-08b2-47f9-8d13-3276caf40615",
+        "title": "Toyota unveils sweeping plans for new battery tech, EV innovation",
+        "author": "Daniel Leussink",
+        "url": "https://www.reuters.com/business/autos-transportation/toyota-market-next-gen-battery-evs-2026-built-by-new-ev-unit-2023-06-13/",
+        "username": "kidruaro",
+        "createdAt": "2023-06-14T01:15:03.992Z"
+    },
+    {
+        "storyId": "eff102e6-4be8-4444-b964-a03e292aadb4",
+        "title": "Springboard's latest news!",
+        "author": "Elie Schoppik",
+        "url": "https://www.springboard.com/",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "5709d8ab-5786-4946-a919-d662dace5f69",
+        "title": "NES Emulator in Rust",
+        "author": "Elie Schoppik",
+        "url": "https://github.com/spieglt/nestur",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "e6da4243-5943-4ef1-8011-fdf91a6e3eab",
+        "title": "Google!",
+        "author": "Elie Schoppik",
+        "url": "https://www.google.com",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "2fca53f8-7df9-44b4-a378-c3fc43d49072",
+        "title": "Ottawa Library fines people using unreliable automatic calling system (1994)",
+        "author": "Elie Schoppik",
+        "url": "http://catless.ncl.ac.uk/Risks/16.54.html#subj2",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "3b50c13e-0a9f-4b44-be65-4b78b9a13611",
+        "title": "Stock Picks from Space (2019)",
+        "author": "Elie Schoppik",
+        "url": "https://www.theatlantic.com/magazine/archive/2019/05/stock-value-satellite-images-investing/586009/",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "c7e47f75-0623-4d7a-b984-0575f7c6757e",
+        "title": "Products I wish existed",
+        "author": "Elie Schoppik",
+        "url": "http://blog.eladgil.com/2020/01/products-i-wish-existed-2020-edition.html",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.083Z"
+    },
+    {
+        "storyId": "a72c20d9-15b0-4c94-90ef-4ddd87801257",
+        "title": "‘Buffett Indicator’ Warns Stocks Doomed for Worse Crash Than 2008",
+        "author": "Elie Schoppik",
+        "url": "https://www.ccn.com/buffett-indicator-warns-stocks-doomed-worse-crash-than-2008/",
+        "username": "SGT",
+        "createdAt": "2023-06-14T00:00:40.082Z"
+    }
+]

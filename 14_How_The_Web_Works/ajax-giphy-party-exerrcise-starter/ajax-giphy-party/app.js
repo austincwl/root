@@ -31,7 +31,7 @@ function addGif(newGif){
 }
 
 $(document).ready(function(){
-    console.log('document ready');
+    console.debug('document ready');
     $('#submit').on('click', function(e){
         console.log('_e_');
         console.log(e);
