@@ -160,7 +160,3 @@
         "createdAt": "2023-06-14T00:00:40.082Z"
     }
 ]
-this is a test of gitpush from mac
-
-push2
-test3s
