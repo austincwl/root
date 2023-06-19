@@ -1,6 +1,10 @@
 "use strict";
 
-const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
+const BASE_URL_PRODUCTION = "https://hack-or-snooze-v3.herokuapp.com"; //production url
+const BASE_URL_TEST = "https://private-anon-e5833de9d0-hackorsnoozev3.apiary-proxy.com/"; //debug proxy url
+const BASE_URL_MOCK = "https://private-anon-e5833de9d0-hackorsnoozev3.apiary-mock.com"; //mock url
+
+const BASE_URL = BASE_URL_TEST;
 
 /******************************************************************************
  * Story: a single story in the system
@@ -202,7 +206,24 @@ class User {
       return null;
     }
   }
-
+  
+  static async getFavorites(token, username){
+    try {
+        const response = await axios({
+          url: `${BASE_URL}/users/${username}`,
+          method: "GET",
+          params: { token },
+        });
+  
+        let { user } = response.data;
+  
+        return user.favorites;
+        
+      } catch (err) {
+        console.error("loginViaStoredCredentials failed", err);
+        return null;
+      }
+  }
  
 }
 
@@ -211,14 +232,57 @@ async function addFavorite(token, username, storyID){
         console.debug('try addFavorite');
         const response = await axios({
             url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
-            method: "post",
+            method: "POST",
             params: { token },
             });
-
+        console.log(response);
         
+        let { user } = response.data;
+        const tempUser = new User(
+            {
+              username: user.username,
+              name: user.name,
+              createdAt: user.createdAt,
+              favorites: user.favorites,
+              ownStories: user.stories
+            },
+            token
+          );
+        currentUser = tempUser;
+        return 1;
     }
     catch{
         console.error('error adding favorite');
-        return null;
+        return 0;
+    }
+}
+
+async function removeFavorite(token, username, storyID){
+    try{
+        console.debug('try removeFavorite');
+        console.debug('token: '+token);
+        const response = await axios({
+            url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
+            method: "DELETE",
+            params: { token },
+            });
+            
+        let { user } = response.data;
+        const tempUser = new User(
+            {
+                username: user.username,
+                name: user.name,
+                createdAt: user.createdAt,
+                favorites: user.favorites,
+                ownStories: user.stories
+            },
+            token
+            );
+        currentUser = tempUser;
+        return 1;   
+    }
+    catch{
+        console.error('error removing favorite');
+        return 0;
     }
 }

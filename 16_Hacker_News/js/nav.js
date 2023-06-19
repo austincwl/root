@@ -9,6 +9,7 @@
 function navAllStories(evt) {
   console.debug("navAllStories", evt);
   hidePageComponents();
+  if(storyList.home){storyList.stories = storyList.home;}
   putStoriesOnPage();
 }
 
@@ -41,14 +42,17 @@ function updateNavOnLogin() {
 function navSubmitClick(){
     console.debug('navSubmitClick');
     hidePageComponents();
-    $addForm.show();
-    
+    $submitForm.show();
 }
 $navSubmit.on('click', navSubmitClick);
 
 //favorites
 function navFavoritesClick(){
     console.debug('navFavoritesClick');
+    //hidePageComponents();
+    storyList.home = storyList.stories;
+    storyList.stories = currentUser.favorites;
+    putStoriesOnPage();
 }
 $navFavorites.on('click',navFavoritesClick);
 

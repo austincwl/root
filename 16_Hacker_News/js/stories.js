@@ -20,12 +20,20 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
+    let favoriteClass = '';
+    //console.debug("generateStoryMarkup_", story);
+    if(currentUser){
+        if(currentUser.favorites.find(e => e.storyId == story.storyId)){
+            console.debug('favorite story added to DOM');
+            favoriteClass='favorite';
+        }
+    }
+    
 
-  const hostName = story.getHostName();
-  return $(`
-      <li id="${story.storyId}">
-       <p class='story-star'>&#x2605;</p>
+    const hostName = story.getHostName();
+    return $(`
+        <li id="${story.storyId}">
+        <p class='story-star ${favoriteClass}'>&#x2605;</p>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -54,6 +62,7 @@ function putStoriesOnPage() {
   console.debug($allStoriesList);
   $star = $('.story-star');
   $allStoriesList.show();
+  
 }
 
 function favoriteStoryClick(e){
@@ -63,16 +72,53 @@ function favoriteStoryClick(e){
     console.debug(e.target.parentElement.id);
     
     const storyID = e.target.parentElement.id;
-    
-    if(e.target.classList.contains('favorite')){
-        //unfavorite
+    try{
+        if(e.target.classList.contains('favorite')){
+            removeFavorite(currentUser.loginToken, currentUser.username, storyID);
+        }
+        else{
+            addFavorite(currentUser.loginToken, currentUser.username, storyID);
+        }
+        //currentUser.favorites = getFavorites(currentUser.loginToke, currentUser.username);
+        //turn star yellow
+        e.target.classList.toggle('favorite');
     }
-    else{
-        addFavorite(currentUser.loginToken, currentUser.username, storyID);
+    catch{
+        console.error("error handling favorite");
     }
     
-    //turn star yellow
-    e.target.classList.toggle('favorite');
 }
 $allStoriesList.on('click', '.story-star', favoriteStoryClick)
 
+async function submitStory(e){
+    e.preventDefault();
+    console.debug('enter submitStory(e)');
+    console.log('submit form_');
+    
+    const title = $('#add-title').val();
+    const url = $('#add-url').val();
+    const author = $('#add-author').val();
+    const token = currentUser.loginToken;
+    
+    const response = await axios({
+        url:`${BASE_URL}/stories`,
+        method: 'POST',
+        data: {
+            token: token,
+            story:{
+                author: author,
+                title: title,
+                url: url,
+            }
+        }
+    });
+    
+    
+    
+    $submitForm.hide();
+    putStoriesOnPage();
+    
+    return response;
+}
+
+$submitForm.on('submit',submitStory);
