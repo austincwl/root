@@ -49,8 +49,10 @@ $navSubmit.on('click', navSubmitClick);
 //favorites
 function navFavoritesClick(){
     console.debug('navFavoritesClick');
-    //hidePageComponents();
-    storyList.home = storyList.stories;
+    hidePageComponents();
+    if(!storyList.home){
+        storyList.home = storyList.stories;
+    }
     storyList.stories = currentUser.favorites;
     putStoriesOnPage();
 }
@@ -59,8 +61,11 @@ $navFavorites.on('click',navFavoritesClick);
 //my stories
 function navMyStoriesClick(){
     console.debug('navMyStoriesClick');
+    hidePageComponents();
+    if(!storyList.home){
+        storyList.home = storyList.stories;
+    }
+    storyList.stories = currentUser.ownStories;
+    putStoriesOnPage();
 }
 $navMyStories.on('click',navMyStoriesClick);
-
-
-;

@@ -54,3 +54,12 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.delete-button{
+    display:inline;
+}
+
+.delete-button:hover{
+    font-weight: bold;
+    cursor: pointer;
+}

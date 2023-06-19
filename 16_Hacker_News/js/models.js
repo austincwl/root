@@ -286,3 +286,30 @@ async function removeFavorite(token, username, storyID){
         return 0;
     }
 }
+
+async function deleteStory(token, username, storyID){
+    console.debug('deleteStory');
+    console.debug('token: '+token);
+    const response = await axios({
+        url: `${BASE_URL}/stories/${storyID}`,
+        method: "DELETE",
+        params: { token },
+        });
+    
+    getAndShowStoriesOnStart();
+    console.log(response);
+    return 1;   
+}
+
+async function refreshUser(username,token){
+    console.debug('refreshUser');
+    const response = await axios({
+        url: `${BASE_URL}/users/${username}`,
+        method: "GET",
+        params: { token },
+        //params: { username },
+        });
+        
+    console.log(response);
+    return 1;   
+}

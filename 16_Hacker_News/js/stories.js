@@ -21,11 +21,16 @@ async function getAndShowStoriesOnStart() {
 
 function generateStoryMarkup(story) {
     let favoriteClass = '';
+    let deleteButton = '';
     //console.debug("generateStoryMarkup_", story);
     if(currentUser){
         if(currentUser.favorites.find(e => e.storyId == story.storyId)){
             console.debug('favorite story added to DOM');
             favoriteClass='favorite';
+        }
+        if(currentUser.ownStories.find(e => e.storyId == story.storyId)){
+            console.debug('adding own story');
+            deleteButton = `<p class='delete-button'>&#x1F5D1;</p>`;
         }
     }
     
@@ -33,6 +38,7 @@ function generateStoryMarkup(story) {
     const hostName = story.getHostName();
     return $(`
         <li id="${story.storyId}">
+        ${deleteButton}
         <p class='story-star ${favoriteClass}'>&#x2605;</p>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
@@ -61,6 +67,7 @@ function putStoriesOnPage() {
   console.debug('allStoriesList_');
   console.debug($allStoriesList);
   $star = $('.story-star');
+  $delete = $('.delete-button');
   $allStoriesList.show();
   
 }
@@ -90,6 +97,20 @@ function favoriteStoryClick(e){
 }
 $allStoriesList.on('click', '.story-star', favoriteStoryClick)
 
+//delete user story
+function deleteStoryClick(e){
+    console.debug('deleteStoryClick');
+    const storyID = e.target.parentElement.id;
+    try{
+        deleteStory(currentUser.loginToken, currentUser.username, storyID);
+    }
+    catch{
+        console.error('error deleting story');
+    }
+}
+$allStoriesList.on('click','.delete-button',deleteStoryClick);
+
+//submit new story to database
 async function submitStory(e){
     e.preventDefault();
     console.debug('enter submitStory(e)');
@@ -113,12 +134,11 @@ async function submitStory(e){
         }
     });
     
-    
-    
     $submitForm.hide();
-    putStoriesOnPage();
+    location.reload();
     
     return response;
 }
 
 $submitForm.on('submit',submitStory);
+
