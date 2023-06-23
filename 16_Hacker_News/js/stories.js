@@ -72,7 +72,7 @@ function putStoriesOnPage() {
   
 }
 
-function favoriteStoryClick(e){
+async function favoriteStoryClick(e){
     console.debug('favoriteStoryClick');
     console.debug(e);
     //get the id
@@ -81,10 +81,10 @@ function favoriteStoryClick(e){
     const storyID = e.target.parentElement.id;
     try{
         if(e.target.classList.contains('favorite')){
-            removeFavorite(currentUser.loginToken, currentUser.username, storyID);
+            currentUser = await User.removeFavorite(currentUser.loginToken, currentUser.username, storyID);
         }
         else{
-            currentUser = User.addFavorite(currentUser.loginToken, currentUser.username, storyID);
+            currentUser = await User.addFavorite(currentUser.loginToken, currentUser.username, storyID);
         }
         //currentUser.favorites = getFavorites(currentUser.loginToke, currentUser.username);
         //turn star yellow

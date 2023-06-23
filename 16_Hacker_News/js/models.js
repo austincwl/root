@@ -225,68 +225,70 @@ class User {
       }
   }
   
-  static async addFavorite(token, username, storyID){
-    try{
-        console.debug('try addFavorite');
-        const response = await axios({
-            url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
-            method: "POST",
-            params: { token },
-            });
-        console.log(response);
-        
-        let { user } = response.data;
-        const tempUser = new User(
-            {
-              username: user.username,
-              name: user.name,
-              createdAt: user.createdAt,
-              favorites: user.favorites,
-              ownStories: user.stories
-            },
-            token
-          );
-        currentUser = tempUser;
-        return 1;
-    }
-    catch{
-        console.error('error adding favorite');
-        return 0;
-    }
-}
-  
-  static async removeFavorite(token, username, storyID){
-    try{
-        console.debug('try removeFavorite');
-        console.debug('token: '+token);
-        const response = await axios({
-            url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
-            method: "DELETE",
-            params: { token },
-            });
+    static async addFavorite(token, username, storyID){
+        try{
+            console.debug('try addFavorite');
+            console.debug('token: '+token);
+            const response = await axios({
+                url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
+                method: "POST",
+                params: { token },
+                });
+            console.log(response);
             
-        let { user } = response.data;
-        const tempUser = new User(
-            {
+            let { user } = response.data;
+            const tempUser = new User(
+                {
                 username: user.username,
                 name: user.name,
                 createdAt: user.createdAt,
                 favorites: user.favorites,
                 ownStories: user.stories
-            },
-            token
+                },
+                token
             );
-        return tempUser;   
+            console.debug('tempUser_');
+            console.debug(tempUser);
+            
+            return tempUser;
+        }
+        catch(err){
+            console.error('error adding favorite',err);
+            return 0;
+        }
     }
-    catch{
-        console.error('error removing favorite');
-        return 0;
+  
+    static async removeFavorite(token, username, storyID){
+        try{
+            console.debug('try removeFavorite');
+            console.debug('token: '+token);
+            const response = await axios({
+                url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
+                method: "DELETE",
+                params: { token },
+                });
+                
+            let { user } = response.data;
+            const tempUser = new User(
+                {
+                    username: user.username,
+                    name: user.name,
+                    createdAt: user.createdAt,
+                    favorites: user.favorites,
+                    ownStories: user.stories
+                },
+                token
+                );
+            return tempUser;   
+        }
+        catch{
+            console.error('error removing favorite');
+            return 0;
+        }
     }
-}
- 
 }
 
-async function addFavorite(token, username, storyID){
+/*async function addFavorite(token, username, storyID){
     try{
         console.debug('try addFavorite');
         const response = await axios({
@@ -344,7 +346,7 @@ async function removeFavorite(token, username, storyID){
         console.error('error removing favorite');
         return 0;
     }
-}
+}*/
 
 async function deleteStory(token, username, storyID){
     console.debug('deleteStory');
