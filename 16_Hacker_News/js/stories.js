@@ -84,7 +84,7 @@ function favoriteStoryClick(e){
             removeFavorite(currentUser.loginToken, currentUser.username, storyID);
         }
         else{
-            addFavorite(currentUser.loginToken, currentUser.username, storyID);
+            currentUser = User.addFavorite(currentUser.loginToken, currentUser.username, storyID);
         }
         //currentUser.favorites = getFavorites(currentUser.loginToke, currentUser.username);
         //turn star yellow
