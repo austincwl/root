@@ -51,7 +51,7 @@ class StoryList {
    */
 
   static async getStories() {
-    console.debug('enter getStories()');
+    //console.debug('enter getStories()');
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
     //  class directly. Why doesn't it make sense for getStories to be an
@@ -66,9 +66,8 @@ class StoryList {
     // turn plain old story objects from API into instances of Story class
     //story{author, createdAt, storyId, title, url, username}
     const stories = response.data.stories.map(story => new Story(story));
-    console.debug('stories_');
-    console.debug(stories);
-    
+    //console.debug('stories_');
+    //console.debug(stories);
     
     // build an instance of our own class using the new array of stories
     return new StoryList(stories);
@@ -201,7 +200,7 @@ class User {
         token
       );
     } catch (err) {
-      console.error("loginViaStoredCredentials failed", err);
+      //console.error("loginViaStoredCredentials failed", err);
       return null;
     }
   }
@@ -219,21 +218,21 @@ class User {
         return user.favorites;
         
       } catch (err) {
-        console.error("loginViaStoredCredentials failed", err);
+        //console.error("loginViaStoredCredentials failed", err);
         return null;
       }
   }
   
     static async addFavorite(token, username, storyID){
         try{
-            console.debug('try addFavorite');
-            console.debug('token: '+token);
+            //console.debug('try addFavorite');
+            //console.debug('token: '+token);
             const response = await axios({
                 url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
                 method: "POST",
                 params: { token },
                 });
-            console.log(response);
+            //console.log(response);
             
             let { user } = response.data;
             const tempUser = new User(
@@ -246,21 +245,21 @@ class User {
                 },
                 token
             );
-            console.debug('tempUser_');
-            console.debug(tempUser);
+            //console.debug('tempUser_');
+            //console.debug(tempUser);
             
             return tempUser;
         }
         catch(err){
-            console.error('error adding favorite',err);
+            //console.error('error adding favorite',err);
             return 0;
         }
     }
   
     static async removeFavorite(token, username, storyID){
         try{
-            console.debug('try removeFavorite');
-            console.debug('token: '+token);
+            //console.debug('try removeFavorite');
+            //console.debug('token: '+token);
             const response = await axios({
                 url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
                 method: "DELETE",
@@ -281,15 +280,15 @@ class User {
             return tempUser;   
         }
         catch{
-            console.error('error removing favorite');
+            //console.error('error removing favorite');
             return 0;
         }
     }
 }
 
 async function deleteStory(token, username, storyID){
-    console.debug('deleteStory');
-    console.debug('token: '+token);
+    //console.debug('deleteStory');
+    //console.debug('token: '+token);
     const response = await axios({
         url: `${BASE_URL}/stories/${storyID}`,
         method: "DELETE",
@@ -297,6 +296,6 @@ async function deleteStory(token, username, storyID){
         });
     
     getAndShowStoriesOnStart();
-    console.log(response);
+    //console.log(response);
     return 1;   
 }

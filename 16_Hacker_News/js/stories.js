@@ -22,14 +22,14 @@ async function getAndShowStoriesOnStart() {
 function generateStoryMarkup(story) {
     let favoriteClass = '';
     let deleteButton = '';
-    //console.debug("generateStoryMarkup_", story);
+    ////console.debug("generateStoryMarkup_", story);
     if(currentUser){
         if(currentUser.favorites.find(e => e.storyId == story.storyId)){
-            console.debug('favorite story added to DOM');
+            //console.debug('favorite story added to DOM');
             favoriteClass='favorite';
         }
         if(currentUser.ownStories.find(e => e.storyId == story.storyId)){
-            console.debug('adding own story');
+            //console.debug('adding own story');
             deleteButton = `<p class='delete-button'>&#x1F5D1;</p>`;
         }
     }
@@ -55,7 +55,7 @@ function generateStoryMarkup(story) {
 /** Gets list of stories from server, generates their HTML, and puts on page. */
 
 function putStoriesOnPage() {
-  console.debug("putStoriesOnPage");
+  //console.debug("putStoriesOnPage");
 
   $allStoriesList.empty();
 
@@ -64,8 +64,8 @@ function putStoriesOnPage() {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
   }
-  console.debug('allStoriesList_');
-  console.debug($allStoriesList);
+  //console.debug('allStoriesList_');
+  //console.debug($allStoriesList);
   $star = $('.story-star');
   $delete = $('.delete-button');
   $allStoriesList.show();
@@ -73,10 +73,10 @@ function putStoriesOnPage() {
 }
 
 async function favoriteStoryClick(e){
-    console.debug('favoriteStoryClick');
-    console.debug(e);
+    //console.debug('favoriteStoryClick');
+    //console.debug(e);
     //get the id
-    console.debug(e.target.parentElement.id);
+    //console.debug(e.target.parentElement.id);
     
     const storyID = e.target.parentElement.id;
     try{
@@ -91,7 +91,7 @@ async function favoriteStoryClick(e){
         e.target.classList.toggle('favorite');
     }
     catch{
-        console.error("error handling favorite");
+        //console.error("error handling favorite");
     }
     
 }
@@ -99,13 +99,13 @@ $allStoriesList.on('click', '.story-star', favoriteStoryClick)
 
 //delete user story
 function deleteStoryClick(e){
-    console.debug('deleteStoryClick');
+    //console.debug('deleteStoryClick');
     const storyID = e.target.parentElement.id;
     try{
         deleteStory(currentUser.loginToken, currentUser.username, storyID);
     }
     catch{
-        console.error('error deleting story');
+        //console.error('error deleting story');
     }
 }
 $allStoriesList.on('click','.delete-button',deleteStoryClick);
@@ -113,8 +113,8 @@ $allStoriesList.on('click','.delete-button',deleteStoryClick);
 //submit new story to database
 async function submitStory(e){
     e.preventDefault();
-    console.debug('enter submitStory(e)');
-    console.log('submit form_');
+    //console.debug('enter submitStory(e)');
+    //console.log('submit form_');
     
     const title = $('#add-title').val();
     const url = $('#add-url').val();
