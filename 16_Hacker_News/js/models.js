@@ -28,8 +28,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    return new URL(this.url).hostname;
   }
 }
 
@@ -52,7 +51,7 @@ class StoryList {
    */
 
   static async getStories() {
-    console.log('enter getStories()');
+    console.debug('enter getStories()');
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
     //  class directly. Why doesn't it make sense for getStories to be an
@@ -67,8 +66,8 @@ class StoryList {
     // turn plain old story objects from API into instances of Story class
     //story{author, createdAt, storyId, title, url, username}
     const stories = response.data.stories.map(story => new Story(story));
-    console.log('stories_');
-    console.log(stories);
+    console.debug('stories_');
+    console.debug(stories);
     
     
     // build an instance of our own class using the new array of stories
@@ -288,66 +287,6 @@ class User {
     }
 }
 
-/*async function addFavorite(token, username, storyID){
-    try{
-        console.debug('try addFavorite');
-        const response = await axios({
-            url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
-            method: "POST",
-            params: { token },
-            });
-        console.log(response);
-        
-        let { user } = response.data;
-        const tempUser = new User(
-            {
-              username: user.username,
-              name: user.name,
-              createdAt: user.createdAt,
-              favorites: user.favorites,
-              ownStories: user.stories
-            },
-            token
-          );
-        currentUser = tempUser;
-        return 1;
-    }
-    catch{
-        console.error('error adding favorite');
-        return 0;
-    }
-}
-
-async function removeFavorite(token, username, storyID){
-    try{
-        console.debug('try removeFavorite');
-        console.debug('token: '+token);
-        const response = await axios({
-            url: `${BASE_URL}/users/${username}/favorites/${storyID}`,
-            method: "DELETE",
-            params: { token },
-            });
-            
-        let { user } = response.data;
-        const tempUser = new User(
-            {
-                username: user.username,
-                name: user.name,
-                createdAt: user.createdAt,
-                favorites: user.favorites,
-                ownStories: user.stories
-            },
-            token
-            );
-        currentUser = tempUser;
-        return 1;   
-    }
-    catch{
-        console.error('error removing favorite');
-        return 0;
-    }
-}*/
-
 async function deleteStory(token, username, storyID){
     console.debug('deleteStory');
     console.debug('token: '+token);
@@ -358,19 +297,6 @@ async function deleteStory(token, username, storyID){
         });
     
     getAndShowStoriesOnStart();
-    console.log(response);
-    return 1;   
-}
-
-async function refreshUser(username,token){
-    console.debug('refreshUser');
-    const response = await axios({
-        url: `${BASE_URL}/users/${username}`,
-        method: "GET",
-        params: { token },
-        //params: { username },
-        });
-        
     console.log(response);
     return 1;   
 }
