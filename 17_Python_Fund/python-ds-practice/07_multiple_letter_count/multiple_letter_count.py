@@ -7,3 +7,13 @@ def multiple_letter_count(phrase):
         >>> multiple_letter_count('Yay')
         {'Y': 1, 'a': 1, 'y': 1}
     """
+    ret = {}
+    for letter in phrase:
+        if (letter in ret.keys()):
+            ret[letter] = ret[letter] + 1
+        else:
+            ret[letter] = 1
+        
+    return ret
+    
+print(multiple_letter_count("abbcccdddd"))
