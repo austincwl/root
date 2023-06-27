@@ -13,3 +13,4 @@ def triple_and_filter(nums):
         >>> triple_and_filter([1, 2])
         []
     """
+    
