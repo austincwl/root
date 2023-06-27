@@ -21,3 +21,21 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+    pairs = []
+    for num1 in nums:
+        for num2 in nums:
+            if((num1+num2)==goal):
+                pairs = pairs + [(num1,num2)]
+    
+    if(len(pairs)>0):
+        indexOfFirst = len(nums) - 1
+        for pair in pairs:
+            #print(pair)
+            maxInd = max(nums.index(pair[0]),nums.index(pair[1]))
+            if(maxInd < indexOfFirst):
+                indexOfFirst = pairs.index(pair)
+        return pairs[indexOfFirst]
+    
+    return ()
+print(sum_pairs([5, 1, 4, 8, 3, 2], 7))
+print(sum_pairs([11, 20, 4, 2, 1, 5], 100))

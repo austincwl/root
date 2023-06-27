@@ -13,4 +13,10 @@ def triple_and_filter(nums):
         >>> triple_and_filter([1, 2])
         []
     """
-    
+    ret = []
+    for num in nums:
+        if(num%4 == 0):
+            ret = ret + [3*num]
+            
+    return ret
+            
