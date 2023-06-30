@@ -24,3 +24,6 @@ def truncate(phrase, n):
         >>> truncate("Woah", 3)
         '...'
     """
+    return phrase.split(0,n)
+
+print(truncate("Hello World", 6))
