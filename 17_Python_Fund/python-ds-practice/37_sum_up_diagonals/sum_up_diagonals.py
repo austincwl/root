@@ -18,3 +18,19 @@ def sum_up_diagonals(matrix):
         >>> sum_up_diagonals(m2)
         30
     """
+    #print(matrix)
+    sum = 0
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            #print("starting number")
+            #print("i:"+str(i))
+            #print("j:"+str(j))
+            #print("len(matrix):"+str(len(matrix)))
+
+            if(i == j or len(matrix)-i-1 == j):
+                #print("matches param")
+                #print("select num:"+str(matrix[i][j]))
+                sum = sum + matrix[i][j]
+                if(i == j and len(matrix)-i-1 == j):   
+                    sum = sum + matrix[i][j]
+    return sum
