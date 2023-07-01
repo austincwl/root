@@ -23,23 +23,35 @@ def sum_range(nums, start=0, end=None):
         >>> sum_range(nums, 1, 99)
         9
     """
+    #print("Current Parameters")
+    #print("nums:"+str(nums))
+    #print("start:"+str(start))
+    #print("end:"+str(end))
     sum = 0
     if(end and end<len(nums)):
-        for i in range(start,end-1):
+        #print("end and end<len(nums)")
+        for i in range(start,end+1):
             sum = sum + nums[i]
+            #print("sum="+str(sum)+",num="+str(nums[i]))
         return sum
     elif(start and start<len(nums)):
         for i in range(start, len(nums)):
             sum = sum + nums[i]
+            #print("sum="+str(sum)+",num="+str(nums[i]))
         return sum
     else:
         for num in nums:
             sum = sum + num
+            #print("sum="+str(sum)+",num="+str(num))
         return sum
     
 nums = [1, 2, 3, 4]
 print(sum_range(nums))
+print("expecting 10")
 print(sum_range(nums, 1))
+print("expecting 9")
 print(sum_range(nums, end=2))
+print("expecting 6")
 print(sum_range(nums, 1, 3))
+print("expecting 9")
 print(sum_range(nums, 1, 99))
