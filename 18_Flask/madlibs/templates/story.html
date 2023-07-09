@@ -6,18 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/static/app.css">
-  <title>{% block title %}{% endblock%}</title>
+  <title>Madlibs</title>
 </head>
 
 <body>
-<h1>Home Page!</h1>
-<form action="/story">
-    {% for prompt in prompts %}
-        <label for="{{prompt}}">{{prompt}}:</label>
-        <input type="text" id="{{prompt}}" name="{{prompt}}"><br>
-    {% endfor %}
-    <input type="submit" value = "Submit"
-<form>
+<h1>Story!</h1>
+<p1>{{story}}</p1>
   <script src="/static/app.js"></script>
 </body>
 
