@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Question{% endblock %}
+
+{% block content %}
+<h1>Survey</h1>
+<h3>Question {{num}}</h3>
+<form action='/answers'>
+    <input type='submit' value='Submit'>
+</form>
+{% endblock %}
